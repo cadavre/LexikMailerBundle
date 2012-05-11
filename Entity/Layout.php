@@ -13,6 +13,9 @@ use Lexik\Bundle\MailerBundle\Model\LayoutInterface;
 
 /**
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="class", type="string")
+ * @ORM\DiscriminatorMap({"layout" = "Layout", "jzlayout" = "Jazzy\MailerBundle\Entity\JzLayout"})
  * @ORM\Table(name="lexik_layout")
  * @DoctrineAssert\UniqueEntity("reference")
  *
