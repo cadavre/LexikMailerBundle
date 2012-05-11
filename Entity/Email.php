@@ -13,6 +13,9 @@ use Lexik\Bundle\MailerBundle\Exception\NoTranslationException;
 
 /**
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="class", type="string")
+ * @ORM\DiscriminatorMap({"email" = "Email", "jzemail" = "Jazzy\MailerBundle\Entity\JzEmail"})
  * @ORM\Table(name="lexik_email")
  * @DoctrineAssert\UniqueEntity("reference")
  *
@@ -79,7 +82,7 @@ class Email implements EmailInterface
      *
      * @var string
      */
-    private $locale;
+    protected $locale;
 
     /**
      * Translation object for the current $this->locale value.
